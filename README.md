@@ -1,2 +1,2 @@
 # Welcome to NoahOS.
-echo Welcome. 
+Welcome :) 
