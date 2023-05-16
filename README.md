@@ -1,6 +1,5 @@
 # Welcome to ShadowOS.
-- A batch based OS based on [NoahTheTechNerd](https://github.com/NoahTheTechNerd)'s [NoahOS](https://github.com/NoahTheTechNerd/noahos).
-- ShadowOS 1.2s coming in 1st of June.
+- A batch based OS based on [NoahTheTechNerd](https://github.com/NoahTheTechNerd)'s deprecated NoahOS.
 
 # Discontinued Products
 - ShadowOS Legacy
