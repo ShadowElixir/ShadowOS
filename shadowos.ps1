@@ -4,7 +4,7 @@
 
 $DownloadURL = 'https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/ShadowOS/shadowos.bat'
 
-$FilePath = "$env:TEMP\shadowos.cmd"
+$FilePath = "$env:TEMP\shadowos.bat"
 
 try {
     Invoke-WebRequest -Uri $DownloadURL -UseBasicParsing -OutFile $FilePath
