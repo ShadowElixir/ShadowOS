@@ -1,7 +1,6 @@
 @echo off
-title Loading and creating files.
-powershell "New-Item ./ShadowOS/AppData -Type Directory" -erroraction 'silentlycontinue'
-set themeoption=White
+title Loading...
+set themeoption=Default
 cls
 goto setup
 :setup
@@ -12,21 +11,9 @@ pause
 cls
 echo To start, what's your name? Leave blank to use Windows username.
 set /p username=
-if %username% == dskip goto home
 if %username% == config goto enterdevmode
-echo Hi there %username%, thanks for using ShadowOS. Now it's time for the boring, but very important stuff.
-pause
 cls
-echo Last Updated on: Saturday 13th of May 2023
-echo ------------------------------------------
-echo ShadowOS Important information:
-echo.
-echo 1. If you have paid for this software, please demand your money back straight away.
-echo 2. You are not allowed to steal our code and re-distribute it as your own, without explicit permission from the team.
-echo 3. ShadowOS is a fork of noahOS which should be considered as a game that attempts to be as close to an operating system as possible.
-echo 4. Games on noahGAMES have been developed for noahOS.
-echo.
-echo If you do not agree with the Important Information, please close this software and delete it.
+echo Hi there %username%, thanks for using ShadowOS.
 pause
 cls
 :home
@@ -36,6 +23,7 @@ echo HOME
 echo ----
 echo Warning: You have new messages on the message board.
 echo -----------------------------------------------------
+echo Type info and then return to read the important information.
 echo Press 1 and then return to enter System Updates.
 echo Press 2 and then return to find out more about ShadowOS.
 echo Press 3 and then return to enter system settings.
@@ -43,6 +31,7 @@ echo Press 4 and then return to personalise your system.
 echo Press 5 and then return to enter the noahGAMES Network.
 echo Press 6 and then return to Clear Data.
 echo Press 7 and then return to to Uninstall ShadowOS.
+echo Press 8 and then return to enter File Manager.
 echo -----
 echo You've reached the end of the HOME Menu.
 set /p homeoption=
@@ -53,14 +42,16 @@ if %homeoption% == 4 goto persetup
 if %homeoption% == 5 goto games
 if %homeoption% == 6 goto cleardata
 if %homeoption% == 7 goto uninstallshadowos
-if %homeoption% == 8 goto easteregg
+if %homeoption% == 8 goto filemanager
+if %homeoption% == info goto info
+if %homeoption% == easteregg goto easteregg
 if %homeoption% == devmode goto enterdevmode
 if %homeoption% == setup goto setup
 if %homeoption% == credits goto credits
 :updates
 cls
 title System Updates
-echo You are currently running version 1.4.1s.
+echo You are currently running version 1.5s.
 echo Press the Enter key to open the releases page for ShadowOS with your default browser.
 pause
 start "" https://github.com/ShadowElixir/ShadowOS/releases
@@ -240,4 +231,94 @@ cls
 title Hello There!
 echo Hello There!
 pause
+goto home
+:filemanager
+cls
+title File Manager
+echo Type the full path of the directory you would like to view (including the drive letter).
+set /p functiondir=
+cd %functiondir%
+goto foldercontents
+:foldercontents
+cls
+title File Manager
+echo Contents of %functiondir%.
+dir
+cd ../
+echo.
+echo Press 1 and then return to go back to the HOME Menu.
+echo Press 2 and then return to change the directory you would like to view.
+echo Press 3 and then return to open a file.
+echo Press 4 and then return to play a song.
+echo Press 5 and then return to make a directory.
+echo Press 6 and then return to make a file.
+set /p fileoption=
+if %fileoption% == 1 home
+if %fileoption% == 2 goto filemanager
+if %fileoption% == 3 goto openapp
+if %fileoption% == 4 goto openmusic
+if %fileoption% == 5 goto mkdir
+if %fileoption% == 6 goto mkfile
+:openapp
+cls
+title File Manager
+cd %functiondir%
+echo Please type the name of the file (with the extension) in %functiondir%.
+set /p functionopenapp=
+start "" %functionopenapp%
+goto filemanager
+:openmusic
+cls
+title Music Player
+cd %functiondir%
+echo Please type the name of the music file (with the extension) in %functiondir%.
+set /p functionopenmusic=
+set "vbs=%temp%\%~n0.vbs"
+echo Set Sound = CreateObject("WMPlayer.OCX.7"^) >"%vbs%"
+echo Sound.URL = "%functionopenmusic%" >>"%vbs%"
+echo Sound.Controls.play >>"%vbs%"
+echo do while Sound.currentmedia.duration = 0 >>"%vbs%"
+echo wscript.sleep 100 >>"%vbs%"
+echo loop >>"%vbs%"
+echo wscript.sleep (int (Sound.currentmedia.duration^)+1^)*1000 >>"%vbs%"
+start /min "" "%vbs%"
+pause
+taskkill /im "wscript.exe" /f
+goto foldercontents
+:mkdir
+cls
+title File Manager
+cd %functiondir%
+echo Please type the name of the directory you would like to make in %functiondir%.
+set /p functiondir2=
+mkdir %functiondir2%
+echo Created!
+pause
+goto filemanager
+:mkfile
+cls
+title File Manager
+cd %functiondir%
+echo Please type the name of the file you would like to make in %functiondir%.
+set /p functionfile=
+powershell "New-Item %functiondir%/%functionfile% -erroraction 'silentlycontinue'"
+echo File "%functionfile%" created!
+pause
+goto filemanager
+:info
+cls
+title ShadowOS Important information 
+echo Last Updated on: Monday 21st of August 2023
+echo --------------------------------------------
+echo ShadowOS Important information:
+echo.
+echo 1. If you have paid for this software, please demand your money back straight away.
+echo 2. You are not allowed to steal our code and re-distribute it as your own, without explicit permission from the team.
+echo 3. ShadowOS is a fork of noahOS which should be considered as a game that attempts to be as close to an operating system as possible.
+echo 4. Games on noahGAMES have been developed for noahOS.
+echo 5. ShadowOS has full compatibility on Windows ME/2000 and above. We do not recommend running ShadowOS on versions of Windows that are no longer supported.
+echo.
+echo If you do not agree with the Important Information, please close this software and delete it.
+pause
+cls
 goto home
