@@ -29,9 +29,7 @@ echo Press 2 and then return to find out more about ShadowOS.
 echo Press 3 and then return to enter system settings.
 echo Press 4 and then return to personalise your system.
 echo Press 5 and then return to enter the noahGAMES Network.
-echo Press 6 and then return to Clear Data.
-echo Press 7 and then return to to Uninstall ShadowOS.
-echo Press 8 and then return to enter File Manager.
+echo Press 6 and then return to enter File Manager.
 echo -----
 echo You've reached the end of the HOME Menu.
 set /p homeoption=
@@ -40,9 +38,7 @@ if %homeoption% == 2 goto findoutmore
 if %homeoption% == 3 goto systemsettings
 if %homeoption% == 4 goto persetup
 if %homeoption% == 5 goto games
-if %homeoption% == 6 goto cleardata
-if %homeoption% == 7 goto uninstallshadowos
-if %homeoption% == 8 goto filemanager
+if %homeoption% == 6 goto filemanager
 if %homeoption% == info goto info
 if %homeoption% == easteregg goto easteregg
 if %homeoption% == devmode goto enterdevmode
@@ -51,7 +47,7 @@ if %homeoption% == credits goto credits
 :updates
 cls
 title System Updates
-echo You are currently running version 1.5s.
+echo You are currently running version 1.5.1s.
 echo Press the Enter key to open the releases page for ShadowOS with your default browser.
 pause
 start "" https://github.com/ShadowElixir/ShadowOS/releases
@@ -214,18 +210,6 @@ title Life Sim - LVL2
 echo We're sorry, but LVL2 currently isn't on our platform yet, keep checking for software updates!
 pause
 goto home
-:cleardata
-title Clearing data
-powershell "Remove-Item ./ShadowOS" -Recurse
-echo Exiting ShadowOS
-pause
-exit
-:uninstallshadowos
-cls
-title Uninstalling ShadowOS
-powershell "Remove-Item ./ShadowOS" -Recurse -erroraction 'silentlycontinue'
-del shadowos.bat
-exit
 :easteregg
 cls
 title Hello There!
