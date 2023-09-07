@@ -20,6 +20,8 @@ cls
 title %username%'s HOME Menu. 
 cls
 echo HOME
+echo ----
+echo You are running ShadowOS 1.5.3s
 echo -----------------------------------------------------
 echo Type info and then return to read the important information.
 echo Press 1 and then return to enter System Updates.
@@ -45,7 +47,7 @@ if %homeoption% == credits goto credits
 :updates
 cls
 title System Updates
-echo You are currently running version 1.5.2s.
+echo You are currently running version 1.5.3s.
 echo Press the Enter key to open the releases page for ShadowOS with your default browser.
 pause
 start "" https://github.com/ShadowElixir/ShadowOS/releases
