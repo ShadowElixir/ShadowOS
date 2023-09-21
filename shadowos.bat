@@ -5,6 +5,7 @@ cls
 goto setup
 :setup
 title Setup
+cls
 echo Hi there, I'm ShadowAI - your personal assistant.
 echo We need to configure a few things and ShadowOS will be ready for your use.
 pause
@@ -21,7 +22,7 @@ title %username%'s HOME Menu.
 cls
 echo HOME
 echo ----
-echo You are running ShadowOS 1.5.3s
+echo You are running ShadowOS 1.6s
 echo -----------------------------------------------------
 echo Type info and then return to read the important information.
 echo Press 1 and then return to enter System Updates.
@@ -33,21 +34,55 @@ echo Press 6 and then return to enter File Manager.
 echo -----
 echo You've reached the end of the HOME Menu.
 set /p homeoption=
+if %homeoption% == info goto info
 if %homeoption% == 1 goto updates
 if %homeoption% == 2 goto findoutmore
 if %homeoption% == 3 goto systemsettings
 if %homeoption% == 4 goto persetup
 if %homeoption% == 5 goto games
 if %homeoption% == 6 goto filemanager
-if %homeoption% == info goto info
-if %homeoption% == easteregg goto easteregg
 if %homeoption% == devmode goto enterdevmode
+if %homeoption% == enterdevmode goto enterdevmode
 if %homeoption% == setup goto setup
 if %homeoption% == credits goto credits
+:devhome
+title %username%'s DEV Menu. 
+cls
+echo DEV HOME
+echo ----
+echo You are running ShadowOS 1.6s (Developer Mode)
+echo -----------------------------------------------------
+echo Type info and then return to read the important information.
+echo Press 1 and then return to enter System Updates.
+echo Press 2 and then return to find out more about ShadowOS.
+echo Press 3 and then return to enter system settings.
+echo Press 4 and then return to personalise your system.
+echo Press 5 and then return to enter the noahGAMES Network.
+echo Press 6 and then return to enter File Manager.
+echo Type devmode and then return to enter the dev menu.
+echo Type enterdevmode and then return to also enter the dev menu.
+echo Type setup and then return to enter setup.
+echo Type credits and then return to enter the credits menu.
+echo Type home and then return to enter the normal home menu.
+echo -----
+echo You've reached the end of the DEV Menu.
+set /p devhomeoption=
+if %devhomeoption% == info goto info
+if %devhomeoption% == 1 goto updates
+if %devhomeoption% == 2 goto findoutmore
+if %devhomeoption% == 3 goto systemsettings
+if %devhomeoption% == 4 goto persetup
+if %devhomeoption% == 5 goto games
+if %devhomeoption% == 6 goto filemanager
+if %devhomeoption% == devmode goto enterdevmode
+if %devhomeoption% == enterdevmode goto enterdevmode
+if %devhomeoption% == setup goto setup
+if %devhomeoption% == credits goto credits
+if %devhomeoption% == home goto home
 :updates
 cls
 title System Updates
-echo You are currently running version 1.5.3s.
+echo You are currently running version 1.6s.
 echo Press the Enter key to open the releases page for ShadowOS with your default browser.
 pause
 start "" https://github.com/ShadowElixir/ShadowOS/releases
@@ -57,7 +92,7 @@ cls
 title Find out more about ShadowOS.
 echo ShadowOS is a fork of noahOS which should be considered as a game that attempts to be as close to an operating system as possible.
 echo https://github.com/ShadowElixir/ShadowOS
-echo https://github.com/NoahTheTechGenius/noahOS
+echo https://github.com/NoahTheTechGenius/noahOS (noahOS not available for now)
 echo Return to the HOME Menu?
 pause
 goto home
@@ -67,42 +102,60 @@ cls
 echo Username - %username%
 echo System Date - %date%
 echo System Time - %time%
-echo Internal Username for the message boards - %username%@local
 echo Theme being used - %themeoption%
 echo.
 echo DEVELOPER NOTICE: Please report any issues with the OS on the issue tracker. 
-echo If the issues you are facing are to do with internet, please press 1 and then return, if you're done here, press 2 and then return. 
+echo Press 1 and then return to go to the issue tracker on GitHub.
+echo Press 2 and then return to go to the dev menu.
 set /p devmodeoption=
-if %devmodeoption% == 1 goto internetdevmode
-if %devmodeoption% == 2 goto home
-:internetdevmode
+if %devmodeoption% == 1 goto issues
+if %devmodeoption% == 2 goto devhome
+:issues
+title Report an Issue.
 cls
-echo Connecting to the Internet. 
-ipconfig
-pause
-echo Returning to the HOME Menu
-pause
-goto home
+start "" https://github.com/ShadowElixir/ShadowOS/issues
+goto enterdevmode
 :credits
 title Credits
+cls
 echo NoahTheTechGenius - developer of noahOS, TextSERV and TextOS.
 echo NoahTheTechGenius - lead designer
 echo NoahTheTechGenius - owner of noahOS, TextSERV and TextOS.
 echo ShadowElixir - developer of ShadowOS
 echo And you!
-echo (also how did you find this easter egg?)
 echo. 
 echo Return to the HOME Menu?
 pause
 goto home
+:systemsettings
+cls
+title System Settings 
+echo Welcome to System Settings:
+echo.
+echo Your current preferences are:
+echo Username: %username%
+echo Current Theme: %themeoption%
+echo System date: %date%
+echo System time: %time%
+echo.
+echo Press 1 and then return to change your username.
+echo Press 2 and then return to change your theme. 
+echo Press 3 and then return to go to the dev menu.
+echo Press 4 and then return to go to the home menu.
+set /p systemoption= 
+if %systemoption% == 1 goto sysuserchange 
+if %systemoption% == 2 goto persetup
+if %systemoption% == 3 goto devhome
+if %systemoption% == 4 goto home
+:sysuserchange
+echo What would you like your username to be?
+set /p username=
+pause
+goto systemsettings
 :persetup
 cls
 title Personalise ShadowOS.
-echo Notice: To personalise your ShadowOS experience, you need to be running Windows ME/2000 or later.
-echo If you are running DOS, Windows 1, Windows 2, Windows 3, Windows 95, Windows 98 SE, please close this application and upgrade to ME/2000 or later.
-echo Restart ShadowOS to reset the theme.
-pause
-cls
+echo WARNING: You will need to restart ShadowOS to reset your theme.
 echo Type Green and then return to change your system colour to Green Text on Black.
 echo Type Aqua and then return to change your system colour to Aqua Text on Black.
 echo Type Red and then return to change your system colour to Red Text on Black.
@@ -110,6 +163,7 @@ echo Type Purple and then return to change your system colour to Purple Text on 
 echo Type Yellow and then return to change your system colour to Yellow Text on Black
 echo Type White and then return to change your system colour to White Text on Black.
 echo Type Chill and then return to change your system colour to Chill Mode.
+echo Type 0 and then return to keep your current theme.
 set /p themeoption=
 if %themeoption% == Green goto gtob
 if %themeoption% == Aqua goto atob
@@ -118,6 +172,7 @@ if %themeoption% == Purple goto ptob
 if %themeoption% == Yellow goto ytob
 if %themeoption% == White goto wtob
 if %themeoption% == Chill goto chl
+if %themeoption% == 0 goto home
 :gtob
 color 0a
 goto home
@@ -139,26 +194,6 @@ goto home
 :chl
 color ed
 goto home
-:systemsettings
-cls
-title System Settings 
-echo Welcome to System Settings:
-echo.
-echo Your current preferences are:
-echo Username: %username%
-echo Current Theme: %themeoption%
-echo System date: %date%
-echo System time: %time%
-echo.
-echo Press 1 and then return to change your username, press 2 and then return to change your theme. 
-set /p systemoption= 
-if %systemoption% == 1 goto sysuserchange 
-if %systemoption% == 2 goto persetup
-:sysuserchange
-echo What would you like your username to be?
-set /p username=
-pause
-goto systemsettings
 :games
 echo Which game would you like to play?
 echo Press 1 and then return to play Life Sim by NoahTheTechGenius.
@@ -210,12 +245,6 @@ title Life Sim - LVL2
 echo We're sorry, but LVL2 currently isn't on our platform yet, keep checking for software updates!
 pause
 goto home
-:easteregg
-cls
-title Hello There!
-echo Hello There!
-pause
-goto home
 :filemanager
 cls
 title File Manager
@@ -230,14 +259,14 @@ echo Contents of %functiondir%.
 dir
 cd ../
 echo.
-echo Press 1 and then return to go back to the HOME Menu.
+echo Press 1 and then return to go back to the home Menu.
 echo Press 2 and then return to change the directory you would like to view.
 echo Press 3 and then return to open a file.
 echo Press 4 and then return to play a song.
 echo Press 5 and then return to make a directory.
 echo Press 6 and then return to make a file.
 set /p fileoption=
-if %fileoption% == 1 home
+if %fileoption% == 1 goto home
 if %fileoption% == 2 goto filemanager
 if %fileoption% == 3 goto openapp
 if %fileoption% == 4 goto openmusic
