@@ -1,5 +1,5 @@
 # Welcome to ShadowOS.
-- A batch based OS based on [TrisoSoft](https://github.com/TrisoSoft)'s [noahOS](https://github.com/TrisoSoft/Sweepy).
+- A batch based OS based on [TrisoSoft](https://github.com/TrisoSoft)'s [Sweepy](https://github.com/TrisoSoft/Sweepy).
 - This forks adds a lot of features to Sweepy, including features from noahOS, Legacy NoahOS and ShadowOS.
 
 # Usage
