@@ -49,7 +49,7 @@ cls
 title HOME
 echo HOME
 echo ----
-echo You are running ShadowOS 2.0s
+echo You are running ShadowOS 2.2s
 echo -----------------------------------------------------
 echo ANNOUNCEMENT: ShadowOS Message Board has moved online, run "messages" to find the new Message Board.
 echo -----------------------------------------------------
@@ -94,7 +94,7 @@ goto home
 :update
 cls
 title Update
-echo You are currently running ShadowOS v2.0s.
+echo You are currently running ShadowOS v2.2s.
 echo Is it OK if ShadowOS connects to the internet to download the latest version?
 echo Type "y" for yes
 echo Type "n" for no.
