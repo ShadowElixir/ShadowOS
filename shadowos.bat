@@ -15,7 +15,8 @@ goto tutorial
 cls
 title Welcome!
 echo Welcome and thank you for deciding to use ShadowOS as your personal assistant.
-echo ShadowOS will be updated regularly to provide you with the best experience. We recommend checking for updates frequently as there may be some bug fixes and sometimes new commands and features!
+echo ShadowOS will be updated regularly to provide you with the best experience.
+echo We recommend checking for updates frequently as there may be some bug fixes and sometimes new commands and features.
 pause
 cls
 echo Let's try running a command. Try running the following command (it's case sensitive): "test.command"
@@ -24,9 +25,24 @@ if %command% == test.command goto tutorial.testcommand
 :tutorial.testcommand
 cls
 title ShadowOS
-echo Well done! You have completed the tutorial. If you require more assistance (or spot a bug, yuck) please report it on our issue tracker.
-reg add "HKCU\Software\ShadowOS" /v firstrun /t REG_SZ /d "1" /f
+echo Well done! You have completed the tutorial.
+echo If you require more assistance (or spot a bug, yuck) please report it on our issue tracker.
+echo Before entering ShadowOS, you must agree to the Sweepy Terms of Service:
+echo ------------------------------------------------------------------------
+echo Sweepy Terms of Service
+echo -----------------------
+echo Last updated on: Tuesday 26th September 2023
+echo --------------------------------------------
+echo 1. You may not change the code for Sweepy and then redistribute it to other people as your own software.
+echo 2. If you have paid for Sweepy, please demand your money back straight away - THIS MIGHT BE A SCAM.
+echo 3. You may only recreate/redistribute Sweepy with permission from TrisoSoft.
+echo 4. Sweepy's updates can end at any time - we are not obliged to provide updates to Sweepy.
+echo --------------------------------------------------------------------------------------------------------
+echo Press Enter to accept the terms of service.
+echo Close this window to disagree with the tos.
+echo -------------------------------------------
 pause
+reg add "HKCU\Software\ShadowOS" /v firstrun /t REG_SZ /d "1" /f
 goto home
 :home
 cls
@@ -59,7 +75,6 @@ if %command% == credits goto credits
 cls
 title Messages
 start "" https://github.com/ShadowElixir/ShadowOS/discussions
-pause
 goto home
 :credits
 cls
