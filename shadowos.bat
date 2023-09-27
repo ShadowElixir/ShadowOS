@@ -1,205 +1,113 @@
 @echo off
-title Loading...
-set themeoption=Default
+title Starting ShadowOS...
+setlocal enabledelayedexpansion
+reg query "HKCU\Software\ShadowOS" > nul 2>&1
+if %errorlevel% equ 0 (
+    for /f "tokens=2*" %%a in ('reg query "HKCU\Software\ShadowOS" /v firstrun ^| find "firstrun"') do (
+        set "firstrun_value=%%b"
+    )
+    if !firstrun_value! equ 1 (
+        goto home
+    )
+)
+goto tutorial
+:tutorial
 cls
-goto setup
-:setup
-title Setup
-cls
-echo Hi there, I'm ShadowAI - your personal assistant.
-echo We need to configure a few things and ShadowOS will be ready for your use.
+title Welcome!
+echo Welcome and thank you for deciding to use ShadowOS as your personal assistant.
+echo ShadowOS will be updated regularly to provide you with the best experience. We recommend checking for updates frequently as there may be some bug fixes and sometimes new commands and features!
 pause
 cls
-echo To start, what's your name? Leave blank to use Windows username.
-set /p username=
-if %username% == config goto enterdevmode
+echo Let's try running a command. Try running the following command (it's case sensitive): "test.command"
+set /p command=
+if %command% == test.command goto tutorial.testcommand
+:tutorial.testcommand
 cls
-echo Hi there %username%, thanks for using ShadowOS.
+title ShadowOS
+echo Well done! You have completed the tutorial. If you require more assistance (or spot a bug, yuck) please report it on our issue tracker.
+reg add "HKCU\Software\ShadowOS" /v firstrun /t REG_SZ /d "1" /f
 pause
-cls
+goto home
 :home
-title %username%'s HOME Menu. 
 cls
+title HOME
 echo HOME
 echo ----
-echo You are running ShadowOS 1.6s
+echo You are running ShadowOS 2.0s
 echo -----------------------------------------------------
-echo Type info and then return to read the important information.
-echo Press 1 and then return to enter System Updates.
-echo Press 2 and then return to find out more about ShadowOS.
-echo Press 3 and then return to enter system settings.
-echo Press 4 and then return to personalise your system.
-echo Press 5 and then return to enter the noahGAMES Network.
-echo Press 6 and then return to enter File Manager.
-echo -----
-echo You've reached the end of the HOME Menu.
-set /p homeoption=
-if %homeoption% == info goto info
-if %homeoption% == 1 goto updates
-if %homeoption% == 2 goto findoutmore
-if %homeoption% == 3 goto systemsettings
-if %homeoption% == 4 goto persetup
-if %homeoption% == 5 goto games
-if %homeoption% == 6 goto filemanager
-if %homeoption% == devmode goto enterdevmode
-if %homeoption% == enterdevmode goto enterdevmode
-if %homeoption% == setup goto setup
-if %homeoption% == credits goto credits
-:devhome
-title %username%'s DEV Menu. 
-cls
-echo DEV HOME
-echo ----
-echo You are running ShadowOS 1.6s (Developer Mode)
+echo ANNOUNCEMENT: ShadowOS Message Board has moved online, run "messages" to find the new Message Board.
 echo -----------------------------------------------------
-echo Type info and then return to read the important information.
-echo Press 1 and then return to enter System Updates.
-echo Press 2 and then return to find out more about ShadowOS.
-echo Press 3 and then return to enter system settings.
-echo Press 4 and then return to personalise your system.
-echo Press 5 and then return to enter the noahGAMES Network.
-echo Press 6 and then return to enter File Manager.
-echo Type devmode and then return to enter the dev menu.
-echo Type enterdevmode and then return to also enter the dev menu.
-echo Type setup and then return to enter setup.
-echo Type credits and then return to enter the credits menu.
-echo Type home and then return to enter the normal home menu.
+echo ShadowOS Command List:
 echo -----
-echo You've reached the end of the DEV Menu.
-set /p devhomeoption=
-if %devhomeoption% == info goto info
-if %devhomeoption% == 1 goto updates
-if %devhomeoption% == 2 goto findoutmore
-if %devhomeoption% == 3 goto systemsettings
-if %devhomeoption% == 4 goto persetup
-if %devhomeoption% == 5 goto games
-if %devhomeoption% == 6 goto filemanager
-if %devhomeoption% == devmode goto enterdevmode
-if %devhomeoption% == enterdevmode goto enterdevmode
-if %devhomeoption% == setup goto setup
-if %devhomeoption% == credits goto credits
-if %devhomeoption% == home goto home
-:updates
+echo "launch.setup" - initiates the setup program.
+echo "messages" - initiates the messages program.
+echo "games" - initiates the gaming program.
+echo "filemanager" - initiates the file manager
+echo "issue.tracker" - initiates the ShadowOS issue tracker.
+echo "update" - initiates the update program.
+echo "credits" - initiates the credits for ShadowOS.
+echo -----
+set /p command=
+if %command% == launch.setup goto tutorial
+if %command% == messages goto messages
+if %command% == games goto games
+if %command% == filemanager goto filemanager
+if %command% == issue.tracker goto issues
+if %command% == update goto update
+if %command% == credits goto credits
+:messages
 cls
-title System Updates
-echo You are currently running version 1.6s.
-echo Press the Enter key to open the releases page for ShadowOS with your default browser.
-pause
-start "" https://github.com/ShadowElixir/ShadowOS/releases
-goto home
-:findoutmore
-cls
-title Find out more about ShadowOS.
-echo ShadowOS is a fork of noahOS which should be considered as a game that attempts to be as close to an operating system as possible.
-echo https://github.com/ShadowElixir/ShadowOS
-echo https://github.com/NoahTheTechGenius/noahOS (noahOS not available for now)
-echo Return to the HOME Menu?
+title Messages
+start "" https://github.com/ShadowElixir/ShadowOS/discussions
 pause
 goto home
-:enterdevmode
-title Developer Mode
-cls
-echo Username - %username%
-echo System Date - %date%
-echo System Time - %time%
-echo Theme being used - %themeoption%
-echo.
-echo DEVELOPER NOTICE: Please report any issues with the OS on the issue tracker. 
-echo Press 1 and then return to go to the issue tracker on GitHub.
-echo Press 2 and then return to go to the dev menu.
-set /p devmodeoption=
-if %devmodeoption% == 1 goto issues
-if %devmodeoption% == 2 goto devhome
-:issues
-title Report an Issue.
-cls
-start "" https://github.com/ShadowElixir/ShadowOS/issues
-goto enterdevmode
 :credits
+cls
 title Credits
-cls
-echo NoahTheTechGenius - developer of noahOS, TextSERV and TextOS.
-echo NoahTheTechGenius - lead designer
-echo NoahTheTechGenius - owner of noahOS, TextSERV and TextOS.
-echo ShadowElixir - developer of ShadowOS
-echo And you!
-echo. 
-echo Return to the HOME Menu?
+echo The ShadowOS Dev team would like to thank you for using ShadowOS.
+echo -----------------------------------------------------------------
+echo TrisoMorpy (founder of TrisoSoft) - lead developer and developer of Sweepy.
+echo ShadowElixir - lead developer and developer of ShadowOS.
 pause
 goto home
-:systemsettings
+:issues
 cls
-title System Settings 
-echo Welcome to System Settings:
-echo.
-echo Your current preferences are:
-echo Username: %username%
-echo Current Theme: %themeoption%
-echo System date: %date%
-echo System time: %time%
-echo.
-echo Press 1 and then return to change your username.
-echo Press 2 and then return to change your theme. 
-echo Press 3 and then return to go to the dev menu.
-echo Press 4 and then return to go to the home menu.
-set /p systemoption= 
-if %systemoption% == 1 goto sysuserchange 
-if %systemoption% == 2 goto persetup
-if %systemoption% == 3 goto devhome
-if %systemoption% == 4 goto home
-:sysuserchange
-echo What would you like your username to be?
-set /p username=
+title Issue Tracker.
+echo Launching the issue tracker. 
+start "" https://github.com/ShadowElixir/ShadowOS/issues
+goto home
+:update
+cls
+title Update
+echo You are currently running ShadowOS v2.0s.
+echo Is it OK if ShadowOS connects to the internet to download the latest version?
+echo Type "y" for yes
+echo Type "n" for no.
+set /p command=
+if %command% == y goto update.connect
+if %command% == n goto home
+:update.connect
+cls
+title Update
+echo Please wait whilst we connect to the internet. Your default web browser will be opened.
+echo Checking your internet connection - this will connect to "google.com"
+ping google.com
+echo Completed. If this didn't work, please make sure you are connected to the internet.
 pause
-goto systemsettings
-:persetup
-cls
-title Personalise ShadowOS.
-echo WARNING: You will need to restart ShadowOS to reset your theme.
-echo Type Green and then return to change your system colour to Green Text on Black.
-echo Type Aqua and then return to change your system colour to Aqua Text on Black.
-echo Type Red and then return to change your system colour to Red Text on Black.
-echo Type Purple and then return to change your system colour to Purple Text on Black.
-echo Type Yellow and then return to change your system colour to Yellow Text on Black
-echo Type White and then return to change your system colour to White Text on Black.
-echo Type Chill and then return to change your system colour to Chill Mode.
-echo Type 0 and then return to keep your current theme.
-set /p themeoption=
-if %themeoption% == Green goto gtob
-if %themeoption% == Aqua goto atob
-if %themeoption% == Red goto rtob
-if %themeoption% == Purple goto ptob
-if %themeoption% == Yellow goto ytob
-if %themeoption% == White goto wtob
-if %themeoption% == Chill goto chl
-if %themeoption% == 0 goto home
-:gtob
-color 0a
-goto home
-:atob
-color 0b
-goto home
-:rtob
-color 0c
-goto home
-:ptob
-color 0d
-goto home
-:ytob
-color 0e
-goto home
-:wtob
-color 0f
-goto home
-:chl
-color ed
+title Update
+echo Opening the ShadowOS GitHub Releases page with your default web browser.
+start "" https://github.com/ShadowElixir/ShadowOS/releases
+pause
 goto home
 :games
+cls
+title ShadowOS Games
+echo Powered by noahGAMES.
 echo Which game would you like to play?
-echo Press 1 and then return to play Life Sim by NoahTheTechGenius.
+echo Type "lifesim" for Life Sim by TrisoSoft.
 echo More games coming soon!
 set /p game=
-if %game% == 1 goto app.noahgames.lifesim
+if %game% == lifesim goto app.noahgames.lifesim
 :app.noahgames.lifesim
 cls
 title Welcome to Life Sim.
@@ -223,10 +131,11 @@ echo Mother: HOW DARE YOU TALK TO ME LIKE THAT, YOU KNOW WHAT, THERE WILL BE NO 
 echo *Call Ends*
 pause
 echo You now have the option on what you would like to do from here.
-echo Press 1 and then return to report your mother to the Police. Press 2 and then return to forgive your mother and admit you were in the wrong. 
+echo Type "report" to report your mother to the Police.
+echo Type "forgive" to forgive your mother and admit you were in the wrong.
 set /p function.noahgames.lifesim.lvl1=
-if %function.noahgames.lifesim.lvl1% == 1 goto app.noahgames.lifesim.lvl1.opt1
-if %function.noahgames.lifesim.lvl1% == 2 goto app.noahgames.lifesim.lvl1.opt2
+if %function.noahgames.lifesim.lvl1% == report goto app.noahgames.lifesim.lvl1.opt1
+if %function.noahgames.lifesim.lvl1% == forgive goto app.noahgames.lifesim.lvl1.opt2
 :app.noahgames.lifesim.lvl1.opt1
 cls
 title Life Sim - LVL1
@@ -259,19 +168,19 @@ echo Contents of %functiondir%.
 dir
 cd ../
 echo.
-echo Press 1 and then return to go back to the home Menu.
-echo Press 2 and then return to change the directory you would like to view.
-echo Press 3 and then return to open a file.
-echo Press 4 and then return to play a song.
-echo Press 5 and then return to make a directory.
-echo Press 6 and then return to make a file.
+echo Type "home" to go back to the home Menu.
+echo Type "changedir" to change the directory you would like to view.
+echo Type "open" to open a file.
+echo Type "music" to initiate the ShadowOS music player.
+echo Type "folder" to make a directory.
+echo Type "file" to make a file.
 set /p fileoption=
-if %fileoption% == 1 goto home
-if %fileoption% == 2 goto filemanager
-if %fileoption% == 3 goto openapp
-if %fileoption% == 4 goto openmusic
-if %fileoption% == 5 goto mkdir
-if %fileoption% == 6 goto mkfile
+if %fileoption% == home goto home
+if %fileoption% == changedir goto filemanager
+if %fileoption% == open goto openapp
+if %fileoption% == music goto openmusic
+if %fileoption% == folder goto mkdir
+if %fileoption% == file goto mkfile
 :openapp
 cls
 title File Manager
@@ -318,20 +227,3 @@ powershell "New-Item %functiondir%/%functionfile% -erroraction 'silentlycontinue
 echo File "%functionfile%" created!
 pause
 goto filemanager
-:info
-cls
-title ShadowOS Important information 
-echo Last Updated on: Monday 21st of August 2023
-echo --------------------------------------------
-echo ShadowOS Important information:
-echo.
-echo 1. If you have paid for this software, please demand your money back straight away.
-echo 2. You are not allowed to steal our code and re-distribute it as your own, without explicit permission from the team.
-echo 3. ShadowOS is a fork of noahOS which should be considered as a game that attempts to be as close to an operating system as possible.
-echo 4. Games on noahGAMES have been developed for noahOS.
-echo 5. ShadowOS has full compatibility on Windows ME/2000 and above. We do not recommend running ShadowOS on versions of Windows that are no longer supported.
-echo.
-echo If you do not agree with the Important Information, please close this software and delete it.
-pause
-cls
-goto home
