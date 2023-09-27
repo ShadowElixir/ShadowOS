@@ -1,6 +1,6 @@
 # Welcome to ShadowOS.
-- A batch based OS based on [Noah](https://github.com/NoahTheTechGenius)'s [noahOS](https://github.com/NoahTheTechGenius/noahOS).
-- This forks adds a lot of features to noahOS, including Legacy NoahOS and ShadowOS features and removes the message board.
+- A batch based OS based on [TrisoSoft](https://github.com/TrisoSoft)'s [noahOS](https://github.com/TrisoSoft/Sweepy).
+- This forks adds a lot of features to Sweepy, including features from noahOS, Legacy NoahOS and ShadowOS.
 
 # Usage
 **Method 1: Automatic**
