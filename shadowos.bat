@@ -27,16 +27,9 @@ cls
 title ShadowOS
 echo Well done! You have completed the tutorial.
 echo If you require more assistance (or spot a bug, yuck) please report it on our issue tracker.
-echo Before entering ShadowOS, you must agree to the Sweepy Terms of Service:
+echo Before entering ShadowOS, you must agree to the Morpies Terms of Service:
 echo ------------------------------------------------------------------------
-echo Sweepy Terms of Service
-echo -----------------------
-echo Last updated on: Tuesday 26th September 2023
-echo --------------------------------------------
-echo 1. You may not change the code for Sweepy and then redistribute it to other people as your own software.
-echo 2. If you have paid for Sweepy, please demand your money back straight away - THIS MIGHT BE A SCAM.
-echo 3. You may only recreate/redistribute Sweepy with permission from TrisoSoft.
-echo 4. Sweepy's updates can end at any time - we are not obliged to provide updates to Sweepy.
+powershell "irm https://raw.githubusercontent.com/Morpies/.github/main/userservices/TOS.txt"
 echo --------------------------------------------------------------------------------------------------------
 echo Press Enter to accept the terms of service.
 echo Close this window to disagree with the tos.
@@ -49,7 +42,7 @@ cls
 title HOME
 echo HOME
 echo ----
-echo You are running ShadowOS 2.2s
+echo You are running ShadowOS 2.2.5s
 echo -----------------------------------------------------
 echo ANNOUNCEMENT: ShadowOS Message Board has moved online, run "messages" to find the new Message Board.
 echo -----------------------------------------------------
@@ -94,7 +87,7 @@ goto home
 :update
 cls
 title Update
-echo You are currently running ShadowOS v2.2s.
+echo You are currently running ShadowOS v2.2.5s.
 echo Is it OK if ShadowOS connects to the internet to download the latest version?
 echo Type "y" for yes
 echo Type "n" for no.
