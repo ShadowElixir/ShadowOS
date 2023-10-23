@@ -42,7 +42,7 @@ cls
 title HOME
 echo HOME
 echo ----
-echo You are running ShadowOS 2.2.5s
+echo You are running ShadowOS 2.6s
 echo -----------------------------------------------------
 echo ANNOUNCEMENT: ShadowOS Message Board has moved online, run "messages" to find the new Message Board.
 echo -----------------------------------------------------
@@ -51,6 +51,7 @@ echo -----
 echo "launch.setup" - initiates the setup program.
 echo "messages" - initiates the messages program.
 echo "games" - initiates the gaming program.
+echo "persetup" - initiates the personalising program.
 echo "filemanager" - initiates the file manager
 echo "issue.tracker" - initiates the ShadowOS issue tracker.
 echo "update" - initiates the update program.
@@ -60,6 +61,7 @@ set /p command=
 if %command% == launch.setup goto tutorial
 if %command% == messages goto messages
 if %command% == games goto games
+if %command% == persetup goto persetup
 if %command% == filemanager goto filemanager
 if %command% == issue.tracker goto issues
 if %command% == update goto update
@@ -74,7 +76,7 @@ cls
 title Credits
 echo The ShadowOS Dev team would like to thank you for using ShadowOS.
 echo -----------------------------------------------------------------
-echo TrisoMorpy (founder of TrisoSoft) - lead developer and developer of Sweepy.
+echo TrisoMorpy (founder of Morpies) - lead developer and developer of Sweepy.
 echo ShadowElixir - lead developer and developer of ShadowOS.
 pause
 goto home
@@ -87,7 +89,7 @@ goto home
 :update
 cls
 title Update
-echo You are currently running ShadowOS v2.2.5s.
+echo You are currently running ShadowOS v2.6s.
 echo Is it OK if ShadowOS connects to the internet to download the latest version?
 echo Type "y" for yes
 echo Type "n" for no.
@@ -161,6 +163,50 @@ cls
 title Life Sim - LVL2
 echo We're sorry, but LVL2 currently isn't on our platform yet, keep checking for software updates!
 pause
+goto home
+:persetup
+cls
+title Personalise ShadowOS.
+echo Type Default and then return to change your system colour to default.
+echo Type Green and then return to change your system colour to Green Text on Black.
+echo Type Aqua and then return to change your system colour to Aqua Text on Black.
+echo Type Red and then return to change your system colour to Red Text on Black.
+echo Type Purple and then return to change your system colour to Purple Text on Black.
+echo Type Yellow and then return to change your system colour to Yellow Text on Black
+echo Type White and then return to change your system colour to White Text on Black. [Default]
+echo Type Chill and then return to change your system colour to Chill Mode.
+set /p themeoption=
+if %themeoption% == Default goto defaulttheme
+if %themeoption% == Green goto gtob
+if %themeoption% == Aqua goto atob
+if %themeoption% == Red goto rtob
+if %themeoption% == Purple goto ptob
+if %themeoption% == Yellow goto ytob
+if %themeoption% == White goto wtob
+if %themeoption% == Chill goto chl
+:defaulttheme
+color
+goto home
+:gtob
+color 0a
+goto home
+:atob
+color 0b
+goto home
+:rtob
+color 0c
+goto home
+:ptob
+color 0d
+goto home
+:ytob
+color 0e
+goto home
+:wtob
+color 0f
+goto home
+:chl
+color ed
 goto home
 :filemanager
 cls
