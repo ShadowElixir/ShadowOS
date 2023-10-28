@@ -1,6 +1,6 @@
 # Welcome to ShadowOS
-- A batch based OS based on [TrisoMorpy](https://github.com/TrisoMorpy)'s [Sweepy](https://github.com/TrisoMorpy/Sweepy).
-- This forks adds a lot of features to Sweepy, including features from noahOS, Legacy NoahOS and ShadowOS.
+- A batch based OS based on [Boopki](https://github.com/Boopki)'s [pcOS](https://github.com/Boopki/pcOS).
+- This forks adds a lot of features to pcOS, including features from Sweepy, noahOS, Legacy NoahOS and Legacy ShadowOS.
 
 # Usage
 **Method 1: Automatic**
@@ -22,7 +22,7 @@ Then, click on Launch ShadowOS.
 Download the latest non-auto updatable version from [releases](https://github.com/ShadowElixir/ShadowOS/releases).
 
 # Screenshots
-**Slightly Outdated**
+**Very Outdated**
 
 ![ShadowOS 1](https://github.com/ShadowElixir/ShadowOS/assets/47082432/6043bdbb-f52b-4217-b657-48ffea0be2ca)
 ![ShadowOS 2](https://github.com/ShadowElixir/ShadowOS/assets/47082432/8c8b18e0-7eb4-4a15-856f-c476b64e160b)
