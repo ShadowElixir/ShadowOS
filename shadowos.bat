@@ -27,7 +27,7 @@ cls
 title ShadowOS
 echo Well done! You have completed the tutorial.
 echo If you require more assistance (or spot a bug, yuck) please report it on our issue tracker.
-echo Before entering ShadowOS, you must agree to the Morpies Terms of Service:
+echo Before entering ShadowOS, you must agree to the Boopki Terms of Service:
 echo ------------------------------------------------------------------------
 powershell "irm https://raw.githubusercontent.com/Boopki/UserServices/main/accounts/tos.txt"
 echo --------------------------------------------------------------------------------------------------------
