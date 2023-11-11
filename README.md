@@ -1,5 +1,5 @@
 # Welcome to ShadowOS
-- A batch based OS based on [Boopki](https://github.com/Boopki)'s [pcOS](https://github.com/Boopki/pcOS).
+- A batch based OS based on [Moose](https://github.com/MooseSoftware)'s pcOS.
 - This forks adds a lot of features to pcOS, including features from [Sweepy](https://github.com/TrisoMorpy/Sweepy), noahOS, Legacy NoahOS and [Legacy ShadowOS](https://github.com/ShadowElixir/ShadowOS-Legacy).
 
 # Usage
