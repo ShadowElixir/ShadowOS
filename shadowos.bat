@@ -20,7 +20,7 @@ echo 1. Show you the TOS.
 pause
 cls
 title ShadowOS's TOS.
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/accounts/tos.txt"
+powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/Moose/tos.txt"
 echo.
 echo If you do not agree with the TOS, please close ShadowOS now. By pressing any key from this point, you agree to the TOS shown above.
 pause
@@ -29,8 +29,8 @@ goto app.shadow.home
 :app.shadow.home
 cls
 title %username%'s HOME.
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/msgboard-homescreen.txt"
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/announcements-homescreen.txt"
+powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/messageboard-home.txt"
+powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/home-ad.txt"
 echo.
 echo Press 1 and then enter to open System Settings.
 echo Press 2 and then enter to open Message Board.
@@ -49,7 +49,7 @@ if %function.shadow.settings.option% == exit exit
 cls
 title ShadowOS Settings
 echo Welcome to Settings.
-echo You're currently running ShadowOS 3s.
+echo You're currently running ShadowOS 3.1s.
 echo.
 echo Press 1 and then enter to enter setup.
 echo Press 2 and then enter for Personalisation.
@@ -116,7 +116,7 @@ goto app.shadow.home
 :app.shadow.messages
 echo ShadowOS Message Board:
 echo.
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/msgboard.txt"
+powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/messageboard.txt"
 pause
 goto app.shadow.home
 :app.shadow.games
@@ -251,7 +251,7 @@ goto app.shadow.filemanager
 cls
 title ShadowOS Update
 echo You are currently running version:
-echo 3s
+echo 3.1s
 echo.
 echo The latest version is:
 powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/latestversion.txt"
