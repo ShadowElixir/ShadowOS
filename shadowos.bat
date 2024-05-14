@@ -34,7 +34,7 @@ powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main
 echo.
 echo Press 1 and then enter to open System Settings.
 echo Press 2 and then enter to open Message Board.
-echo Press 3 and then enter to open noahGAMES.
+echo Press 3 and then enter to open shadowGAMES.
 echo Press 4 and then enter to open File Manager.
 echo Press 5 and then enter to check for updates.
 echo Type 'exit' and then enter to quit ShadowOS.
@@ -122,21 +122,20 @@ goto app.shadow.home
 :app.shadow.games
 cls
 title ShadowOS Games
-echo Powered by noahGAMES.
+echo Powered by shadowGAMES.
 echo Which game would you like to play?
 echo Type "lifesim" for Life Sim by TrisoSoft.
 echo More games coming soon!
 set /p game=
-if %game% == lifesim goto app.noahgames.lifesim
-:app.noahgames.lifesim
+if %game% == lifesim goto app.shadowGAMES.lifesim
+:app.shadowGAMES.lifesim
 cls
 title Welcome to Life Sim.
-echo A noahGAMES production.
-echo A noahOS Development Team production.
+echo A shadowGAMES production.
 pause
 cls
-goto app.noahgames.lifesim.lvl1
-:app.noahgames.lifesim.lvl1
+goto app.shadowGAMES.lifesim.lvl1
+:app.shadowGAMES.lifesim.lvl1
 cls
 title Life Sim - LVL1
 echo %username%: Ah, what a lovely day to be going out for a walk.
@@ -144,7 +143,7 @@ echo Jamie: Yeah %username%, it indeed is a lovely day to be going out for a wal
 echo *Mother calls %username%*
 echo %username%: Hi mother, is everything OK?
 echo Mother: Yes, everything is fine, I just wanted to know if you're going to have something to eat when you get home?
-echo %username%: No, probably not, I've just been to noahFOOD. 
+echo %username%: No, probably not, I've just been to shadowFOOD. 
 echo Mother: WHAT DID I SAY ABOUT EATING FAST FOOD %username%!
 echo %username%: Look, I'm sorry, but you know, I'm out here earning the money to pay for all of this, not you, so mind your own business.
 echo Mother: HOW DARE YOU TALK TO ME LIKE THAT, YOU KNOW WHAT, THERE WILL BE NO PC, NO GAMES, NO NOTHING FOR THE NEXT 5 MONTHS!
@@ -153,22 +152,22 @@ pause
 echo You now have the option on what you would like to do from here.
 echo Type "report" to report your mother to the Police.
 echo Type "forgive" to forgive your mother and admit you were in the wrong.
-set /p function.noahgames.lifesim.lvl1=
-if %function.noahgames.lifesim.lvl1% == report goto app.noahgames.lifesim.lvl1.opt1
-if %function.noahgames.lifesim.lvl1% == forgive goto app.noahgames.lifesim.lvl1.opt2
-:app.noahgames.lifesim.lvl1.opt1
+set /p function.shadowGAMES.lifesim.lvl1=
+if %function.shadowGAMES.lifesim.lvl1% == report goto app.shadowGAMES.lifesim.lvl1.opt1
+if %function.shadowGAMES.lifesim.lvl1% == forgive goto app.shadowGAMES.lifesim.lvl1.opt2
+:app.shadowGAMES.lifesim.lvl1.opt1
 cls
 title Life Sim - LVL1
 echo BAD ENDING: You reported your mother for taking away your stuff, but now you're being taken away.
 pause
-goto app.noahgames.lifesim.lvl2
-:app.noahgames.lifesim.lvl1.opt2
+goto app.shadowGAMES.lifesim.lvl2
+:app.shadowGAMES.lifesim.lvl1.opt2
 cls
 title Life Sim - LVL1
 echo GOOD Ending: Your mother decided to forgive you, and you lived happily ever after.
 pause
-goto app.noahgames.lifesim.lvl2
-:app.noahgames.lifesim.lvl2
+goto app.shadowGAMES.lifesim.lvl2
+:app.shadowGAMES.lifesim.lvl2
 cls
 title Life Sim - LVL2
 echo We're sorry, but LVL2 currently isn't on our platform yet, keep checking for software updates!
