@@ -49,7 +49,7 @@ if %function.shadow.settings.option% == exit exit
 cls
 title ShadowOS Settings
 echo Welcome to Settings.
-echo You're currently running ShadowOS 3.1s.
+echo You're currently running ShadowOS 3.2s.
 echo.
 echo Press 1 and then enter to enter setup.
 echo Press 2 and then enter for Personalisation.
@@ -250,7 +250,7 @@ goto app.shadow.filemanager
 cls
 title ShadowOS Update
 echo You are currently running version:
-echo 3.1s
+echo 3.2s
 echo.
 echo The latest version is:
 powershell "irm https://raw.githubusercontent.com/ShadowElixir/UserServices/main/pcOS/latestversion.txt"
