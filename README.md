@@ -1,5 +1,5 @@
 # Welcome to ShadowOS
-A batch-based OS.
+A batch OS based on [textOS batch N](https://github.com/ShadowElixir/textOS). 
 
 # Usage
 **Method 1: Automatic**
