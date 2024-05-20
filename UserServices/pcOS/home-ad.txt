@@ -1,0 +1,1 @@
+Have you tried using VariousScripts? It makes it quicker and easier for you to launch textOS-based OSs along with other scripts.
