@@ -20,7 +20,7 @@ echo 1. Show you the TOS.
 pause
 cls
 title ShadowOS's TOS.
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/UserServices/Moose/tos.txt"
+powershell "irm https://raw.githubusercontent.com/textSoftware/UserServices/main/Production/tos.txt"
 echo.
 echo If you do not agree with the TOS, please close ShadowOS now. By pressing any key from this point, you agree to the TOS shown above.
 pause
@@ -29,8 +29,6 @@ goto app.shadow.home
 :app.shadow.home
 cls
 title %username%'s HOME.
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/UserServices/pcOS/messageboard-home.txt"
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/UserServices/pcOS/home-ad.txt"
 echo.
 echo Press 1 and then enter to open System Settings.
 echo Press 2 and then enter to open Message Board.
@@ -47,7 +45,7 @@ if %function.shadow.settings.option% == exit exit
 cls
 title ShadowOS Settings
 echo Welcome to Settings.
-echo You're currently running ShadowOS 3.4s.
+echo You're currently running ShadowOS 4s.
 echo.
 echo Press 1 and then enter to enter setup.
 echo Press 2 and then enter for Personalisation.
@@ -114,7 +112,7 @@ goto app.shadow.home
 :app.shadow.messages
 echo ShadowOS Message Board:
 echo.
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/UserServices/pcOS/messageboard.txt"
+start "" https://github.com/ShadowElixir/ShadowOS/discussions
 pause
 goto app.shadow.home
 :app.shadow.filemanager
@@ -193,15 +191,39 @@ goto app.shadow.filemanager
 :app.shadow.update
 cls
 title ShadowOS Update
-echo You are currently running version:
-echo 3.4s
-echo.
-echo The latest version is:
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/UserServices/pcOS/latestversion.txt"
-echo.
-echo Whats new in the latest version:
-powershell "irm https://raw.githubusercontent.com/ShadowElixir/ShadowOS/main/UserServices/pcOS/latestversiondesc.txt"
-echo.
-echo If you've launched this application using VariousScripts, you are already running the latest version of ShadowOS.
+setlocal
+
+set "psScript=%temp%\update-ShadowOS.ps1"
+
+(
+    echo.function Update-ShadowOS {
+    echo.    if (^$global:canConnectToGitHub -eq $false^) {
+    echo.        return
+    echo.    }
+    echo.
+    echo.    try {
+    echo.        ^$updateNeeded = $false
+    echo.        ^$currentVersion = 'shadowos-4s'
+    echo.        ^$gitHubApiUrl = "https://api.github.com/repos/ShadowElixir/ShadowOS/releases/latest"
+    echo.        ^$latestReleaseInfo = Invoke-RestMethod -Uri ^$gitHubApiUrl
+    echo.        ^$latestVersion = ^$latestReleaseInfo.tag_name.Trim('v'^)
+    echo.        if (^$currentVersion -lt ^$latestVersion^) {
+    echo.            ^$updateNeeded = $true
+    echo.        }
+    echo.
+    echo.        if (^$updateNeeded^) {
+    echo.            Write-Output "Update available, latest version is ^$latestVersion"
+    echo.        }
+    echo.    } catch {
+    echo.        Write-Error "Failed to check for updates ShadowOS. Error: ^$_"
+    echo.    }
+    echo.}
+    echo.
+    echo.Update-ShadowOS
+) > "%psScript%"
+
+powershell -ExecutionPolicy Bypass -File "%psScript%"
+
+endlocal
 pause
 goto app.shadow.home
