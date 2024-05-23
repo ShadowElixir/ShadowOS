@@ -1,7 +1,5 @@
-Discontinued, please use [textOS batch N](https://github.com/ShadowElixir/textOS) instead.
-
 # Welcome to ShadowOS
-A batch OS based on [textOS batch N](https://github.com/ShadowElixir/textOS). 
+A batch-based OS.
 
 # Usage
 **Method 1: Automatic**
