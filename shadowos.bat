@@ -20,6 +20,7 @@ echo 1. Show you the TOS.
 pause
 cls
 title ShadowOS's TOS.
+powershell "irm https://raw.githubusercontent.com/textSoftware/UserServices/main/Production/tosu.txt"
 powershell "irm https://raw.githubusercontent.com/textSoftware/UserServices/main/Production/tos.txt"
 echo.
 echo If you do not agree with the TOS, please close ShadowOS now. By pressing any key from this point, you agree to the TOS shown above.
@@ -45,7 +46,7 @@ if %function.shadow.settings.option% == exit exit
 cls
 title ShadowOS Settings
 echo Welcome to Settings.
-echo You're currently running ShadowOS 4s.
+echo You're currently running ShadowOS 4.0.1s.
 echo.
 echo Press 1 and then enter to enter setup.
 echo Press 2 and then enter for Personalisation.
@@ -203,7 +204,7 @@ set "psScript=%temp%\update-ShadowOS.ps1"
     echo.
     echo.    try {
     echo.        ^$updateNeeded = $false
-    echo.        ^$currentVersion = 'shadowos-4s'
+    echo.        ^$currentVersion = 'shadowos-4.0.1s'
     echo.        ^$gitHubApiUrl = "https://api.github.com/repos/ShadowElixir/ShadowOS/releases/latest"
     echo.        ^$latestReleaseInfo = Invoke-RestMethod -Uri ^$gitHubApiUrl
     echo.        ^$latestVersion = ^$latestReleaseInfo.tag_name.Trim('v'^)
