@@ -13,15 +13,19 @@ if %errorlevel% equ 0 (
 :app.shadow.setup
 cls
 title Welcome to ShadowOS Setup.
-echo Hi there. Thanks for deciding to use ShadowOS 3s
+echo Hi there. Thanks for deciding to use ShadowOS 4.1s
 echo.
 echo What do we need to do to continue with Setup?
 echo 1. Show you the TOS.
 pause
 cls
 title ShadowOS's TOS.
-powershell "irm https://raw.githubusercontent.com/textSoftware/UserServices/main/Production/tosu.txt"
-powershell "irm https://raw.githubusercontent.com/textSoftware/UserServices/main/Production/tos.txt"
+echo If you want to showcase ShadowOS in a YouTube video, feel free, while giving credits to me.
+echo Do not sell ShadowOS, it is open-source software.
+echo If you bought ShadowOS, you have been scammed, please refund your purchase.
+echo If you want to fork ShadowOS, go ahead, just give me credits.
+echo GitHub Project: https://github.com/ShadowElixir/ShadowOS
+echo My GitHub: https://github.com/ShadowElixir
 echo.
 echo If you do not agree with the TOS, please close ShadowOS now. By pressing any key from this point, you agree to the TOS shown above.
 pause
@@ -46,61 +50,15 @@ if %function.shadow.settings.option% == exit exit
 cls
 title ShadowOS Settings
 echo Welcome to Settings.
-echo You're currently running ShadowOS 4.0.1s.
+echo You're currently running ShadowOS 4.1s.
 echo.
 echo Press 1 and then enter to enter setup.
-echo Press 2 and then enter for Personalisation.
-echo Press 3 and then enter for the issue tracker.
-echo Press 4 and then enter to return to the HOME Menu.
+echo Press 2 and then enter for the issue tracker.
+echo Press 3 and then enter to return to the HOME Menu.
 set /p function.shadow.settings.option=
 if %function.shadow.settings.option% == 1 goto app.shadow.setup
-if %function.shadow.settings.option% == 2 goto app.shadow.persetup
-if %function.shadow.settings.option% == 3 goto app.shadow.issues
-if %function.shadow.settings.option% == 4 goto app.shadow.home
-:app.shadow.persetup
-cls
-title Personalise your install of ShadowOS.
-echo Type 1 and then enter to change your system colour to Default.
-echo Type 2 and then enter to change your system colour to Green Text on Black.
-echo Type 3 and then enter to change your system colour to Aqua Text on Black.
-echo Type 4 and then enter to change your system colour to Red Text on Black.
-echo Type 5 and then enter to change your system colour to Purple Text on Black.
-echo Type 6 and then enter to change your system colour to Yellow Text on Black
-echo Type 7 and then enter to change your system colour to Light Mode (Black Text on White).
-echo Type 8 and then enter to change your system colour to Chill Mode.
-set /p function.shadow.persetup.option=
-if %function.shadow.persetup.option% == 1 goto app.shadow.persetup.default
-if %function.shadow.persetup.option% == 2 goto app.shadow.persetup.gtob
-if %function.shadow.persetup.option% == 3 goto app.shadow.persetup.atob
-if %function.shadow.persetup.option% == 4 goto app.shadow.persetup.rtob
-if %function.shadow.persetup.option% == 5 goto app.shadow.persetup.ptob
-if %function.shadow.persetup.option% == 6 goto app.shadow.persetup.ytob
-if %function.shadow.persetup.option% == 7 goto app.shadow.persetup.btow
-if %function.shadow.persetup.option% == 8 goto app.shadow.persetup.chl
-:app.shadow.persetup.default
-color 07
-goto app.shadow.home
-:app.shadow.persetup.gtob
-color 0a
-goto app.shadow.home
-:app.shadow.persetup.atob
-color 0b
-goto app.shadow.home
-:app.shadow.persetup.rtob
-color 0c
-goto app.shadow.home
-:app.shadow.persetup.ptob
-color 0d
-goto app.shadow.home
-:app.shadow.persetup.ytob
-color 0e
-goto app.shadow.home
-:app.shadow.persetup.wtob
-color f0
-goto app.shadow.home
-:app.shadow.persetup.chl
-color ed
-goto app.shadow.home
+if %function.shadow.settings.option% == 2 goto app.shadow.issues
+if %function.shadow.settings.option% == 3 goto app.shadow.home
 :app.shadow.issues
 cls
 title Issue Tracker.
@@ -204,7 +162,7 @@ set "psScript=%temp%\update-ShadowOS.ps1"
     echo.
     echo.    try {
     echo.        ^$updateNeeded = $false
-    echo.        ^$currentVersion = 'shadowos-4.0.1s'
+    echo.        ^$currentVersion = 'shadowos-4.1s'
     echo.        ^$gitHubApiUrl = "https://api.github.com/repos/ShadowElixir/ShadowOS/releases/latest"
     echo.        ^$latestReleaseInfo = Invoke-RestMethod -Uri ^$gitHubApiUrl
     echo.        ^$latestVersion = ^$latestReleaseInfo.tag_name.Trim('v'^)
