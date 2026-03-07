@@ -15,6 +15,6 @@ Download the latest non-auto updatable version from [releases](https://github.co
 
 # Age Verification
 
-ShadowOS won't have age verification, therefore ShadowOS is banned in regions where age verification is mandatory for all operating systems, like Brazil and some regions of the US.
+ShadowOS won't have age verification, therefore ShadowOS and ShadowOS Legacy are banned in regions where age verification is mandatory for all operating systems, like Brazil and some regions of the US.
 
 *(Not like ShadowOS is a real operating system anyway)*
